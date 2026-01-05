@@ -1,7 +1,5 @@
 const App = () => {
-  return (
-    <div className="uppercase">App</div>
-  )
-}
+	return <></>;
+};
 
-export default App
+export default App;

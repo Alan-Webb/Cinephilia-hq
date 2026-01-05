@@ -6,6 +6,7 @@ Movie Database App
 
 - React
 - Tailwind CSS
+- Daisy UI
 
 ## Author
 
