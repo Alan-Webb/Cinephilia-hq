@@ -1,5 +1,7 @@
 import {useEffect, useState} from "react";
 import SearchBar from "./components/SearchBar";
+import Spinner from "./components/Spinner";
+import ErrorMsg from "./components/ErrorMsg";
 
 const App = () => {
 	const [movies, setMovies] = useState([]);
@@ -12,7 +14,7 @@ const App = () => {
 	const [selectMovie, setSelectMovie] = useState(null);
 	const [view, setView] = useState("search");
 
-	const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+	const API_KEY = "import.meta.env.VITE_TMDB_API_KEY";
 
 	useEffect(() => {
 		if (view === "favorites") {
@@ -56,6 +58,7 @@ const App = () => {
 			<h1 className="text-4xl font-extrabold mb-6 drop-shadow-2xl">
 				Cinephilia HQ
 			</h1>
+			{/* Navigation */}
 			<div className="tabs tabs-border mb-6">
 				<a
 					className={`tab text-lg ${view === "search" ? "tab-active" : ""}`}
@@ -73,11 +76,15 @@ const App = () => {
 					Favorites
 				</a>
 			</div>
+			{/* Search Bar */}
 			{view === "search" && (
 				<div className="w-full max-w-md mb-6">
 					<SearchBar onSearch={handleSearch} />
 				</div>
 			)}
+			{/* Loading Spinner & Error Msg */}
+			{loading && <Spinner />}
+			{error && <ErrorMsg message={error} />}
 		</div>
 	);
 };
